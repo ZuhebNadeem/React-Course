@@ -1,8 +1,4 @@
----
-noteId: "2fc2a790ada111ee89f40755e32fca0e"
-tags: []
+# React-Course 
 
----
+- React kurset gjennom https://www.udemy.com/course/react-the-complete-guide-incl-redux/
 
-# React-Course
-# React-Course
