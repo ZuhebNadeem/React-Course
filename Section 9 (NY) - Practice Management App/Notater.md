@@ -88,4 +88,4 @@ document.getElementById("modal-root")
 ### Managing Tasks & Understanding Prop Drilling (Adding NewTasks to Tasks)
 
 - What is Prop Drilling? Prop drilling occurs when a parent component generates its state and passes it down as props to its children components that do not consume the props – instead, they only pass it down to another component that finally consumes it.
-- 
+- Clearing Tasks & Fixing Minor Bugs: 

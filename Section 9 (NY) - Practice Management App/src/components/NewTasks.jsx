@@ -2,13 +2,16 @@ import React from "react";
 import { useState } from "react";
 
 export default function NewTasks({ onAdd }) {
-  const [enteredTask, setEnteredTask] = useState();
+  const [enteredTask, setEnteredTask] = useState("");
 
   const handleChange = (event) => {
     setEnteredTask(event.target.value);
   };
 
   const handleClick = () => {
+    if (enteredTask.trim() === "") {
+      return;
+    }
     setEnteredTask("");
     onAdd(enteredTask);
   };
