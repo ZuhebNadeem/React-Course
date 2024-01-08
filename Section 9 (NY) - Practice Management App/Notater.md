@@ -83,4 +83,5 @@ const Modal = forwardRef(function Modal({ children }, ref) {
 ### Making Projects Selectable & Viewing Project Details
 
 - All that data should be received here as props. So here I expect to get the project prop, which should be such a project object so that here we can output project title and so on.
+- That's the JavaScript code you can use for finding an element in an array by ID. Find like map is a method built into Vanilla JavaScript that takes a function as an argument, a function that will be executed for every element in this array. And that function then should return true if we found the element we were looking for. And in that case, find will return that element and it's therefore then this found element that will be stored in selected project.
 - 
