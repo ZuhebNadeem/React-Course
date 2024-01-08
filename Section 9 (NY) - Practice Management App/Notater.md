@@ -52,36 +52,40 @@ id: Math.random(),
   );
 
   - This modal component function will receive an extra parameter which will be the ref that might be set from outside on that component.
-  - useImperativeHandle: To now expose a function that can be called from outside this component function, we must use useImperativeHandle. 
-  - To this hook, you first pass this ref, which you are receiving. 
+  - useImperativeHandle: To now expose a function that can be called from outside this component function, we must use useImperativeHandle.
+  - To this hook, you first pass this ref, which you are receiving.
   - And then as a second value, you must provide a function that will be called by React in the end where you return an object that then exposes any properties or functions you want to expose to other components.
 
 const Modal = forwardRef(function Modal({ children }, ref) {
-  const dialog = useRef();
+const dialog = useRef();
 
-  useImperativeHandle(ref, () => {
-    return {
-      open() {
-        dialog.current.showModal();
-      },
-    };
-  });
-
-  return createPortal(
-    <dialog ref={dialog}>{children}</dialog>,
-    document.getElementById("modal-root")
-  );
+useImperativeHandle(ref, () => {
+return {
+open() {
+dialog.current.showModal();
+},
+};
 });
 
--  The purpose of this component is to create a modal dialog that can be controlled imperatively using a ref
-- useImperativeHandle(ref, () => {...});: This hook is used to customize the instance value that is exposed when using the ref. In this case, it returns an object with a single method open(). The open method is intended to be called on the ref, and when invoked, it calls dialog.current.showModal().
-- return createPortal(<dialog ref={dialog}>{children}</dialog>, document.getElementById("modal-root"));: This line uses the createPortal function from React to render the modal outside the normal React component tree. It creates a <dialog> element with a ref set to the dialog ref and wraps the children inside it. 
-- The modal is then appended to an element with the ID "modal-root" in the DOM.
-- To use this Modal component, you would typically create a ref, attach it to the Modal component, and then use the ref's open() method to programmatically open the modal. 
+return createPortal(
+<dialog ref={dialog}>{children}</dialog>,
+document.getElementById("modal-root")
+);
+});
 
+- The purpose of this component is to create a modal dialog that can be controlled imperatively using a ref
+- useImperativeHandle(ref, () => {...});: This hook is used to customize the instance value that is exposed when using the ref. In this case, it returns an object with a single method open(). The open method is intended to be called on the ref, and when invoked, it calls dialog.current.showModal().
+- return createPortal(<dialog ref={dialog}>{children}</dialog>, document.getElementById("modal-root"));: This line uses the createPortal function from React to render the modal outside the normal React component tree. It creates a <dialog> element with a ref set to the dialog ref and wraps the children inside it.
+- The modal is then appended to an element with the ID "modal-root" in the DOM.
+- To use this Modal component, you would typically create a ref, attach it to the Modal component, and then use the ref's open() method to programmatically open the modal.
 
 ### Making Projects Selectable & Viewing Project Details
 
 - All that data should be received here as props. So here I expect to get the project prop, which should be such a project object so that here we can output project title and so on.
 - That's the JavaScript code you can use for finding an element in an array by ID. Find like map is a method built into Vanilla JavaScript that takes a function as an argument, a function that will be executed for every element in this array. And that function then should return true if we found the element we were looking for. And in that case, find will return that element and it's therefore then this found element that will be stored in selected project.
+- Deleting: Now an elegant way of doing that is to use the previous state and the projects that are stored there and calling the filter method, which just like map and find, is a method built into vanilla JavaScript. And filter works such that it takes a function as an input just like map and find and this function will be executed for every item in this array. Again, just as it's the case for find and map. But this function should then return true if an element should be kept or false if it should be dropped. And the filter method will then return a brand new array that only contains the elements that were not dropped. So, for which this function yielded true. Now this function, just like find and map will receive every item here as a input. And then here we should return true if we want to keep the item and false if we want to drop it.
+
+### Managing Tasks & Understanding Prop Drilling (Adding NewTasks to Tasks)
+
+- What is Prop Drilling? Prop drilling occurs when a parent component generates its state and passes it down as props to its children components that do not consume the props – instead, they only pass it down to another component that finally consumes it.
 - 
