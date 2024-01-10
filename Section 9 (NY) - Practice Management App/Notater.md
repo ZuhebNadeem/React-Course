@@ -25,7 +25,7 @@ id: Math.random(),
 };
 
       return {
-        ...prevState, //  spreading all the existing state so that the existing data is copied into this newly returned object
+        ...prevState, //  spreading all the existing state so that the existing data is copied into this newly returned object. 
         projects: [...prevState.projects, newProject], //And I want to update this array without losing any old projects. Therefore, I'll start by copying all the old projects with the spread operator into this new array. And then as a last element, we'll add the new project that should be added.
       };
     });
@@ -37,7 +37,6 @@ id: Math.random(),
 - I'll simply use refs because as you learned, you can use refs to connect them to HTML elements and then interact with those elements. For example, to retrieve the value of an input.
 - We need to forward incoming refs so that we can use them in here and we can establish this cross component ref connection.
 - With forWardRef: weWre able to set this ref prop on our custom component and it will get forwarded and can be used inside of that custom component.
--
 
 ### Validating User Input & Showing an Error Modal via useImperativeHandle
 
@@ -88,4 +87,3 @@ document.getElementById("modal-root")
 ### Managing Tasks & Understanding Prop Drilling (Adding NewTasks to Tasks)
 
 - What is Prop Drilling? Prop drilling occurs when a parent component generates its state and passes it down as props to its children components that do not consume the props – instead, they only pass it down to another component that finally consumes it.
-- Clearing Tasks & Fixing Minor Bugs: 
