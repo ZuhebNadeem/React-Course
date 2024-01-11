@@ -80,8 +80,10 @@ A Different Way Of Consuming Context:
 - reducer: A function that reduce one or more complex values to a simpler one.
 - And the action you will then dispatch with this dispatch function will indeed be the action you'll receive on that second parameter.
 - Now the state you'll get here , on the other hand will be the guaranteed latest state snapshot of that state that is managed by useReducer.
-- function shoppingCartReducer(state, action)  action checks with the dispatch function and type. 
+- function shoppingCartReducer(state, action) action checks with the dispatch function and type.
 - action er det det du får tilbake, nå du dispatcher.
 - state we'll always get that latest state snapshot automatically.
-- 
+- When dispatching actions, you should make sure that every action is an object that has a type property.
 
+- In the solution, as a first step, the existing counterReducer() function is edited to accept two parameters: A state value, A dispatched action.
+- useReducer() then returns an array with exactly two elements: The current state + A "dispatch" function that can be called to dispatch a new action.
