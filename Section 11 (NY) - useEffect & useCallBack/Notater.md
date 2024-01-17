@@ -54,6 +54,8 @@ Introducing useEffect's Cleanup Function:
 - The problem is: cleaning it up, getting rid of it, when the component dissapear.
 - Because when using useEffect, you cannot just define this effect function, but also a cleanup function that should be executed right before this effect function runs again. OR right before this component dismounts, so, before it's removed from the DOM.
 - And you define such a cleanup function by returning it from inside the effect function.
+- We have to return this cleanup function that will be executed by React, and we should then store a reference to this interval in a constant or variable.
+- The cleanup function being needed to avoid ongoing processes behind the scenes which aren't needed anymore but which, of course, would cost performance.
 
 The Problem with Object & Function Dependencies:
 
@@ -66,16 +68,22 @@ The Problem with Object & Function Dependencies:
 
 ### UseCallBack
 
-- React offers a hook which you can use to make sure that this function is not recreated all the time. 
+- React offers a hook which you can use to make sure that this function is not recreated all the time.
 - useCallBack: Wrap it around a function. Pass the funciton that should be wrapped as a first argument, and second argument is dependency ([]).
 - it's not recreated whenever this surrounding component function is executed again.
 - So with useCallback, React makes sure that this inner-function is not recreated. Instead, it stores it internally in memory and reuses that stored function whenever the component function executes again.
 - You should useCallback when passing functions as dependencies to useEffect. SHOULD I?
-- []: you should add any prop or state values that are used inside of this wrapped function. setState and localstorage dont need to be added, props or state values. Or any other values that in the end depdend on state values, just as with useEffect. 
-- 
+- []: you should add any prop or state values that are used inside of this wrapped function. setState and localstorage dont need to be added, props or state values. Or any other values that in the end depdend on state values, just as with useEffect.
 
-SPM: 
-- Do i need to include allt he dependencies everytime []? Når bør du og når bør du ikke inkludere. 
+### Optimizing State Updates
+
+- Problem: React has to reevaluate this entire JSX code every 10 secound.
+- Soloution: It would be better to outsource this progress indicator and this related state logic and useEffect hook into a separate component so that it's then just this one single component that should be re-executed all the time.
+- And now with that, it's not the entire delete confirmation component that will be re-executed every 10 milliseconds, but it's, instead, inside of the progress bar component that this computation will take place. And this is an optimization you might wanna consider to avoid unnecessary computations.
+
+SPM:
+
+- Do i need to include allt he dependencies everytime []? Når bør du og når bør du ikke inkludere.
 - Når ikke bruke usecallBack? Inne i samme fil, var det ikke det jeg fikk forslag om?
 - You should useCallback when passing functions as dependencies to useEffect. SHOULD I?
-- Compare useCallback with useEffect. 
+- Compare useCallback with useEffect.
