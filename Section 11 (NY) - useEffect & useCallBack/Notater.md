@@ -24,6 +24,7 @@ Using useEffect for Handling (Some) Side Effects:
 - The functions inside useEffect is a side effect = Data fetching, setting up a subscription, and manually changing the DOM in React components are all examples of side effects.
 - useEffect will be executed by React after every component execution.
 - After JSX code is returned, then the useEffect is returned.
+
 - Instead, it's only after the app component function execution finished. So, after this JSX code here has been returned. That this side effect function you passed to useEffect will be executed by React. So, React will execute that after the component function is done executing. Now, if you then update the state here with useState, the component function executes again as you learned. And in theory this effect function would execute again. But that's where this dependencies[] array comes into play. React will actually take a look at the dependencies specified there. And it will only execute this effect function again. If the dependency values changed.
 - Empty dependency []: Instead, it only executes it once after this app component function was executed for the first time. But then this effect function is never executed again.
 - The useEffect hook in React runs after rendering but does not guarantee that rendering is completed before its execution.
@@ -31,7 +32,7 @@ Using useEffect for Handling (Some) Side Effects:
   A function that contains the code you want to run as the effect.
   An optional array of dependencies (dependencies are variables or values that, when changed, will trigger the effect to run). If you don’t want the product to depend on anything, you can pass an empty array ([]).
 
-Not All Side Effects Need useEffect + useEffect Not Needed: Another Example: (Les mer på dette)
+Not All Side Effects Need useEffect + useEffect Not Needed: Another Example
 
 - Fetching the user's location, and store data in the browser's storage is not directly related to rendering this JSX code.
 - Not every side effect needs useEffect like localStorage example.
@@ -72,7 +73,7 @@ The Problem with Object & Function Dependencies:
 - useCallBack: Wrap it around a function. Pass the funciton that should be wrapped as a first argument, and second argument is dependency ([]).
 - it's not recreated whenever this surrounding component function is executed again.
 - So with useCallback, React makes sure that this inner-function is not recreated. Instead, it stores it internally in memory and reuses that stored function whenever the component function executes again.
-- You should useCallback when passing functions as dependencies to useEffect. SHOULD I?
+- You should useCallback when passing functions as dependencies to useEffect. 
 - []: you should add any prop or state values that are used inside of this wrapped function. setState and localstorage dont need to be added, props or state values. Or any other values that in the end depdend on state values, just as with useEffect.
 
 ### Optimizing State Updates
@@ -81,9 +82,14 @@ The Problem with Object & Function Dependencies:
 - Soloution: It would be better to outsource this progress indicator and this related state logic and useEffect hook into a separate component so that it's then just this one single component that should be re-executed all the time.
 - And now with that, it's not the entire delete confirmation component that will be re-executed every 10 milliseconds, but it's, instead, inside of the progress bar component that this computation will take place. And this is an optimization you might wanna consider to avoid unnecessary computations.
 
-SPM:
+### Mer useEffect fra nett
 
-- Do i need to include allt he dependencies everytime []? Når bør du og når bør du ikke inkludere.
-- Når ikke bruke usecallBack? Inne i samme fil, var det ikke det jeg fikk forslag om?
-- You should useCallback when passing functions as dependencies to useEffect. SHOULD I?
-- Compare useCallback with useEffect.
+- useEffect does execute after the component renders.
+- The dependencies specified in the second argument control when the effect should re-run.
+- If the dependencies array is empty, the effect will run once after the initial render.
+- If there are dependencies, the effect will re-run whenever any of those dependencies change.
+
+- No, if you provide an empty dependency array ([]) as the second argument to useEffect, it means that the effect will run once after the initial render and then not run again on subsequent re-renders. It essentially tells React that the effect has no dependencies, so there's no need to re-run it unless the component is unmounted and then mounted again.
+- If the conditions in the dependency array change, the useEffect will run.
+  Whether the entire component re-renders depends on other factors, such as whether the component is a functional component or a class component, whether optimizations like React.memo are applied, and if any state or props that the component relies on have changed.
+- If the state is updated within the component, but that state is not included in the dependency array of useEffect, React won't consider the change in that state as a trigger to re-run the effect. The effect will still run after the initial render, but subsequent changes to the state that is not listed as a dependency will not cause the effect to re-run.
