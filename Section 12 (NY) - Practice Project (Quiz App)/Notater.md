@@ -20,4 +20,9 @@ Working with Effects (Practice & Dive Deeper):
 - React's StrictMode turned on in main JSX. Now during development, and only there, this StrictMode will actually execute every component function twice, which is done to help you catch certain errors in your app. Because in theory, your app should work in exactly the same way, no matter if a component function gets executed once when being rendered to the screen or 100 times. StrictMode helps us identify that we have a bug.
 - And you already learned that you should use this key when outputting list data, because there this key helps React identify those different list items and it helps React manage that list efficiently behind the scenes, so to say. But the key prop also has another purpose. Whenever it changes on a component, even if that component is not part of a list, whenever it changes React will destroy the old component instance and create a new one. So it will unmount and remount it basically. And that's exactly what we need here, because I wanna recreate this question timer component whenever we switch to a new question.
 
-- 
+- It is typically considered a good practice to avoid the usage of use effect if it's possible.
+- useRef: will not change if the component function is executed again. You can use refs for managing values that are stored and managed independently from the component function lifecycle to which they belong.
+- We can use the key prop to force React to destroy and recreate a component.
+- Adding components does not just help with keeping your code manageable, but can also help you solve problems by splitting or combining logic that might otherwise interfere.
+
+-
