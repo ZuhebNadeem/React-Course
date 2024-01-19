@@ -1,4 +1,4 @@
-### SECTION 12: PRACTICE PROJECT: BUILDING A QUIZ APP
+## SECTION 12: PRACTICE PROJECT: BUILDING A QUIZ APP
 
 Working with Effects (Practice & Dive Deeper):
 
@@ -25,4 +25,5 @@ Working with Effects (Practice & Dive Deeper):
 - We can use the key prop to force React to destroy and recreate a component.
 - Adding components does not just help with keeping your code manageable, but can also help you solve problems by splitting or combining logic that might otherwise interfere.
 
--
+- The easiest way of fixing "not rendering", is to again add a key so that when we change the value, we destroy and recreate the component and force the interval to be recreated.
+- Therefore, here's a situation where the index is a better key. And typically you wanna avoid using this index of the map method, because this is now not tied to the data but instead by the position of the data in the array. So if two items in the array would swap position the data would be changed, but the index would not change because the position one still has the index zero, for example. But here it's fine because we aren't swapping any answers in this list, we're not swapping data here, and index indeed is the the best key we have here.
