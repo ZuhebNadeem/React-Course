@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-export default function QuestionTimer({ timeout, onTimeOut }) {
+export default function QuestionTimer({ timeout, onTimeout }) {
   const [remainingTime, setRemainingTime] = useState(timeout);
 
   useEffect(() => {
-    console.log("SETTING TIMEOOUT");
-    const timer = setTimeout(onTimeOut, timeout);
+    console.log("SETTING TIMEOUT");
+    const timer = setTimeout(onTimeout, timeout);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [timeout, onTimeOut]);
+  }, [timeout, onTimeout]);
 
   useEffect(() => {
     console.log("SETTING INTERVAL");

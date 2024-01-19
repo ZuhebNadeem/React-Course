@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 export default function Answers({
   answers,
@@ -16,22 +16,27 @@ export default function Answers({
   return (
     <ul id="answers">
       {shuffledAnswers.current.map((answer) => {
-        const isSlected = selectedAnswer === answer;
+        const isSelected = selectedAnswer === answer;
         let cssClass = "";
 
-        if (answerState === "answered" && isSlected) {
+        if (answerState === "answered" && isSelected) {
           cssClass = "selected";
         }
+
         if (
           (answerState === "correct" || answerState === "wrong") &&
-          isSlected
+          isSelected
         ) {
           cssClass = answerState;
         }
 
         return (
           <li key={answer} className="answer">
-            <button onClick={() => onSelect(answer)} className={cssClass}>
+            <button
+              onClick={() => onSelect(answer)}
+              className={cssClass}
+              disabled={answerState !== ""}
+            >
               {answer}
             </button>
           </li>
