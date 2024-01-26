@@ -58,7 +58,7 @@ Time to practice: Food order app (Components, state, context, effects, HTTP requ
   }
   }, [open]);
 
--
+- We can use a cleanup function here in useEffect, which will be executed whenever this effect function is about to run again. So whenever the open prop value changes, for example.
 
 ### Custom Input
 
