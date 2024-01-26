@@ -59,8 +59,23 @@ Time to practice: Food order app (Components, state, context, effects, HTTP requ
   }, [open]);
 
 - We can use a cleanup function here in useEffect, which will be executed whenever this effect function is about to run again. So whenever the open prop value changes, for example.
+- const updatedItems = [...state.items];
+  It creates a copy of the current state's items array.
+
+const updatedItem = {
+...existingItem,
+quantity: existingItem.quantity + 1,
+};
+
+- ...existingItem: This uses the spread operator to copy all properties of the existingItem object into the new updatedItem object. This is a concise way of creating a shallow copy of an object.
+- quantity: existingItem.quantity + 1: This adds a new property quantity to the updatedItem object. The value of this property is set to one more than the current quantity of the existingItem. In other words, it increments the quantity by 1.
+- So, overall, this code creates a new object (updatedItem) that is a copy of an existing item with an increased quantity by 1. It's commonly used in Redux or state management systems to ensure immutability by creating new objects instead of modifying existing ones.
 
 ### Custom Input
+
+- const updatedItems = [...state.items];
+  It creates a copy of the current state's items array.
+-
 
 ### From Submission & Validation
 
