@@ -71,17 +71,24 @@ quantity: existingItem.quantity + 1,
 - quantity: existingItem.quantity + 1: This adds a new property quantity to the updatedItem object. The value of this property is set to one more than the current quantity of the existingItem. In other words, it increments the quantity by 1.
 - So, overall, this code creates a new object (updatedItem) that is a copy of an existing item with an increased quantity by 1. It's commonly used in Redux or state management systems to ensure immutability by creating new objects instead of modifying existing ones.
 
-### Custom Input
+### Form
 
 - {...props} => From outside, and I want to allow myself to use this input in a flexible way and add any Props I want to this input here.
   <Input label="Full Name" type="text" />: Now I'll set the type of that input to text, and thanks to me collecting all Props here and then spreading them onto the input element, that type will be forwarded and will be set on this input here.
 
--
-
-### From Submission & Validation
+- event.preventDefault(): When using a regular button in a regular form, the browser will go ahead and create an HTTP request for you and send it for you. But unfortunately not to the backend we want it to be sent to because the browser doesn't know about that. Instead, the browser would send the request to this development server that's serving this site, so our front end. But this server and this site is not prepared and equipped to handle this request. Therefore, what we need to do is we need to prevent that default. We can do this by calling preventDefault on that standard event object which we automatically receive in our event handling functions. And by calling this method here, preventDefault, we make sure that this request, which otherwise would get created and sent is not getting created and sent. Therefore, now we have a chance to control what should happen when that form is submitted.
+- Extracting values from form: Can use useState, useRef or FormData object.
+  const fd = new FormData(event.target.value);
+- const customerData = Object.fromEntries(fd.entries()): And this will essentially give us an object where we, for example, have an email property with the value entered by the user, and of course key value pairs for all the other input fields as well. And therefore, this is how we can easily extract the data entered by the user.
 
 ### POST
 
-### Custom HTTP Hook & Avoiding Common Errors
+- So how can we now send this data along with the cart data to the backend?
+- headers: { "Content-Type": "application/json"}: So that the backend understands that we're submitting some data in JSON format, and it should be extracted accordingly.
+- Request body: We need to set that request body so that data that should be attached. And as mentioned, that should be in JSON format, and you can easily generate data in that format with the built-in JSON.stringify method, which now takes any standard JavaScript value to convert it to JSON.
+
+### Adding a Custom HTTP Hook & Avoiding Common Errors
+
+-
 
 ### HTTP Loading & Error States
