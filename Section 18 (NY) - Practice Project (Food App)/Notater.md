@@ -89,6 +89,21 @@ quantity: existingItem.quantity + 1,
 
 ### Adding a Custom HTTP Hook & Avoiding Common Errors
 
--
+- We have to manage some state to reflect those different request states in the UI, because the idea with this custom hook in the end, of course, will be to use it in a component.
+- So the initial value of loadedMeals will be undefined until the request is done, but that will take some time and the component function will not wait for the request to finish to do its work. Instead, this JSX code will be parsed and converted to HTML code right away, so to say, and of course it therefore fails to run this code, because loadedMeals, as I just explained, is undefined initially.
+- use await: With that we'll instead store the resolved data, and not some promise object.
 
 ### HTTP Loading & Error States
+
+- if (isLoading) {
+  return <p className="center">Fetching meals...</p>;
+  }
+
+if (error) {
+return <Error title="Failed to fetch meals" message={error} />;
+}
+
+### Finishing Touches
+
+- use my custom useHttp hook: I want to call sendRequest which I got from my custom hook to send that request. So not sending the request immeadtly, but after form is submitted.
+-
