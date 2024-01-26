@@ -73,8 +73,9 @@ quantity: existingItem.quantity + 1,
 
 ### Custom Input
 
-- const updatedItems = [...state.items];
-  It creates a copy of the current state's items array.
+- {...props} => From outside, and I want to allow myself to use this input in a flexible way and add any Props I want to this input here.
+  <Input label="Full Name" type="text" />: Now I'll set the type of that input to text, and thanks to me collecting all Props here and then spreading them onto the input element, that type will be forwarded and will be set on this input here.
+
 -
 
 ### From Submission & Validation
