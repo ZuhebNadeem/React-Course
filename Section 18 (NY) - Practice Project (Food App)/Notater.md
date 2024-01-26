@@ -43,5 +43,29 @@ Time to practice: Food order app (Components, state, context, effects, HTTP requ
   <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
   );
 
-- Therefore we of course need to get access to that context and we can do that with help of the useContext hook. To use context, you must pass your context object as an identifier: const cartCtx = useContext(CartContext): can now use cartCtx to access the context. 
-- 
+- Therefore we of course need to get access to that context and we can do that with help of the useContext hook. To use context, you must pass your context object as an identifier: const cartCtx = useContext(CartContext): can now use cartCtx to access the context.
+-
+
+### Forskjellig
+
+- React Portal: But we'll always inject the dialogue when it's visible in a specific area of the real DOM that we as a developer control upfront. And I wanna inject it into this another div here.
+- This dialogue element when opened programmatically, so not by setting this open prop, automatically displays a backdrop. So a little area behind the overlay that can be used to gray out the other content and to overlay the other content so that we can't interact with it whilst the dialogue is open. And that's why I don't wanna open it by setting the open prop. But why instead I want to open the dialogue programmatically.
+- Now one way of achieving this, as you learned earlier in the course, would be to use a forward ref here, so that we can expose some functions from our custom component here to other components and those other components could then call those functions to, for example, open or close this dialogue. And whilst this would work, I'll take a different route here. I'll use use useEffect here also to again practice working with that to in the end, interact with that native dialogue element whenever the open prop value changes.
+
+  useEffect(() => {
+  if (open) {
+  dialog.current.showModal();
+  }
+  }, [open]);
+
+-
+
+### Custom Input
+
+### From Submission & Validation
+
+### POST
+
+### Custom HTTP Hook & Avoiding Common Errors
+
+### HTTP Loading & Error States
