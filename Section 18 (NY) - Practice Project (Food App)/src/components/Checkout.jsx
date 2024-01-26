@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import Modal from "./UI/Modal";
-import CartContext from "../store/CartContext";
-import { currencyFormatter } from "../util/formatting";
-import Input from "./UI/Input";
-import Button from "./UI/Button";
-import UserProgressContext from "../store/UserProgressContext";
+import { useContext } from "react";
+
+import Modal from "./UI/Modal.jsx";
+import CartContext from "../store/CartContext.jsx";
+import { currencyFormatter } from "../util/formatting.js";
+import Input from "./UI/Input.jsx";
+import Button from "./UI/Button.jsx";
+import UserProgressContext from "../store/UserProgressContext.jsx";
 
 export default function Checkout() {
   const cartCtx = useContext(CartContext);
@@ -22,8 +23,8 @@ export default function Checkout() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const fd = new FormData(event.target.value);
-    const customerData = Object.fromEntries(fd.entries());
+    const fd = new FormData(event.target);
+    const customerData = Object.fromEntries(fd.entries()); // { email: test@example.com }
 
     fetch("http://localhost:3000/orders", {
       method: "POST",
@@ -43,7 +44,8 @@ export default function Checkout() {
     <Modal open={userProgressCtx.progress === "checkout"} onClose={handleClose}>
       <form onSubmit={handleSubmit}>
         <h2>Checkout</h2>
-        <p>Total Amount: {currencyFormatter.format(cartTotal)} </p>
+        <p>Total Amount: {currencyFormatter.format(cartTotal)}</p>
+
         <Input label="Full Name" type="text" id="name" />
         <Input label="E-Mail Address" type="email" id="email" />
         <Input label="Street" type="text" id="street" />
@@ -51,6 +53,7 @@ export default function Checkout() {
           <Input label="Postal Code" type="text" id="postal-code" />
           <Input label="City" type="text" id="city" />
         </div>
+
         <p className="modal-actions">
           <Button type="button" textOnly onClick={handleClose}>
             Close
