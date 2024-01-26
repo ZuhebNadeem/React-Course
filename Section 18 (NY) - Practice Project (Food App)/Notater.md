@@ -29,4 +29,19 @@ Time to practice: Food order app (Components, state, context, effects, HTTP requ
 ### Cart Context & Reducer
 
 - Add to cart button, and see the carts: Let's make sure that we start managing some cart data whenever this button or this button is clicked.
--
+- Reducer: This action object that will tell this function how to update this state. And here it's quite common to receive an object as a value for action to be precise, an object that also has a type property or some other identifier property.
+- updatedItems.splice(existingCartItemIndex, 1): Splice takes an index, in this case the existing cart item index and then the number of items that should be spliced, which here simply means removed. So this will remove one item at this index which simply means it'll remove the item at that index. So that's how we can remove a item if it's the last item in a shopping cart.
+- Whenever this cart state(context) changes, this new context will be distributed to all interested components.
+- And therefore now these two functions are also part of this context object and can also be accessed from other components in the app and can therefore be triggered from inside those components.
+  const cartContext = {
+  items: cart.items,
+  addItem,
+  removeItem,
+  };
+
+  return (
+  <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
+  );
+
+- Therefore we of course need to get access to that context and we can do that with help of the useContext hook. To use context, you must pass your context object as an identifier: const cartCtx = useContext(CartContext): can now use cartCtx to access the context. 
+- 
