@@ -22,7 +22,7 @@ Behind the scenes (Understanding & Optimizing React):
 - memo: You can wrap around your component functions so to say, that will prevent unnecessary component function executions.
 - memo compares prop values. With memo this counter or component function would only be re executed when prop changes. React will look at old props and new props, and if changed it will renderer the component again. Memo only prevents function executions that are triggered by the parent component, so the app component.
 - If props equal = Counter component function will not execute. Not equal = Counter component function will execute.
-- Ingen grunn til at den blir oppdatert, når props ikke har blitt endret. Vi har samme resultat for komponent enda, som fø.
+- Ingen grunn til at den blir oppdatert, når props ikke har blitt endret. Vi har samme resultat for komponent enda, som før.
 - Dont overuse memo: Use it as high up in the componet tree as possible. Checking props before every execution with memo() cost performance, Dont wrap it around all your components - it wil just add a lof of unnecessary checks. And if you would wrap memo around all your components that would simply mean that React always has to check the props before it executes the component function. Dont use it on components where props will change frequently, memo() would just perform a meaningless check in such cases (which cost performance).
 - So where this comparison almost always yields the result that the component function should be executed because then you paid the performance price for this check just to get the same result as you would get without memo that the component function is executed.
 

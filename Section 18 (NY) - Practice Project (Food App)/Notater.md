@@ -44,7 +44,6 @@ Time to practice: Food order app (Components, state, context, effects, HTTP requ
   );
 
 - Therefore we of course need to get access to that context and we can do that with help of the useContext hook. To use context, you must pass your context object as an identifier: const cartCtx = useContext(CartContext): can now use cartCtx to access the context.
--
 
 ### Forskjellig
 
@@ -106,4 +105,3 @@ return <Error title="Failed to fetch meals" message={error} />;
 ### Finishing Touches
 
 - use my custom useHttp hook: I want to call sendRequest which I got from my custom hook to send that request. So not sending the request immeadtly, but after form is submitted.
--
