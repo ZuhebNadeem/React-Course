@@ -43,4 +43,6 @@ exisitingItem.quantity--;
 - So, we keep all the items, where the ids do not match the one id we're trying to remove.That's how we can update these items to remove the one item that should be removed from the array whilst keeping all the other items.
 - And therefore for the item where the id is equal, we'll filter that out and remove it therefore. That's how we can update these items to remove the one item that should be removed from the array whilst keeping all the other items.
 - We'll export it as a file default, and we will also export the actions because of course we will need to dispatch those actions.
--
+- we can now read data from the state by also importing useSelector and then selecting a piece of data. So, we call useSelector, past is function for selecting data from the state and dive into state.cart, dot cart because in index.js here, we gave this a cart key and then into the properties we set up in the state of our cartSlice. So, in this case, we're interested in the totalQuantity, hence here we dive into state.card.totalQuantity and store this in, let's say CartQuantity constant: const cartQuantity = useSelector((state) => state.cart.totalQuantity);
+- Need data from redux, we use useSelector. 
+- 
