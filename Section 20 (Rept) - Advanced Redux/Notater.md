@@ -92,8 +92,9 @@ exisitingItem.quantity--;
   };
   };
   - Now in cart slice, we are instead dispatching a function that returns another function.
-  - 
+  - Both option is good.
 
-### Getting Started with Fetching Data
+### Redux DevTools
 
+- These are extra tools which we can use which make debugging Redux and our Redux state a bit easier. Because in more complex applications with a lot of Redux state handled by a lot of different slices and a lot of different actions going on it can be difficult to find errors in your debug state in the order of your actions and so on.
 -
