@@ -9,10 +9,11 @@ export const fetchCartData = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Could not fetch cart data");
+        throw new Error("Could not fetch cart data!");
       }
 
       const data = await response.json();
+
       return data;
     };
 
@@ -22,13 +23,6 @@ export const fetchCartData = () => {
         cartActions.replaceCart({
           items: cartData.items || [],
           totalQuantity: cartData.totalQuantity,
-        })
-      );
-      dispatch(
-        uiActions.showNotification({
-          status: "success",
-          title: "Success...",
-          message: "Sent cart data successfully",
         })
       );
     } catch (error) {
@@ -45,7 +39,6 @@ export const fetchCartData = () => {
 
 export const sendCartData = (cart) => {
   return async (dispatch) => {
-    //before we call dispatch, we can perform any asynchronous code, any side effects, because we will not yet, have reached our reducer.
     dispatch(
       uiActions.showNotification({
         status: "pending",
@@ -67,7 +60,7 @@ export const sendCartData = (cart) => {
       );
 
       if (!response.ok) {
-        throw new Error("Sending cart data failed");
+        throw new Error("Sending cart data failed.");
       }
     };
 
@@ -77,8 +70,8 @@ export const sendCartData = (cart) => {
       dispatch(
         uiActions.showNotification({
           status: "success",
-          title: "Success...",
-          message: "Sent cart data successfully",
+          title: "Success!",
+          message: "Sent cart data successfully!",
         })
       );
     } catch (error) {
