@@ -38,7 +38,9 @@ Using framer motion to bring things to life
   <motion.div layoutId="tab-indicator" className="active-tab-indicator" />
   It will basically automatically detect whenever you are rendering another element with the same layoutId in a different place of your page and it will automatically play a smooth animation.
 - Re-triggering Animations via Keys: You can actually restart this animation, you can reset this component so to say. Make React think that it just appeared. But in React, even if you're not using Framer Motion, keys also have another purpose. When you add them on an element and you then change the value that's assigned to the key. For example, because of some state change, React will basically destroy the old component instance and render a new one instead. So you can add that key prop to any component of your choice and change that value then to get React to recreate that component. And that will reset any internal state stored in that component, and also therefore re-trigger any entry animations that should be played.
+  <Badge key={badgeCaption} caption={badgeCaption}></Badge>
 
 ### Scroll-based Animations
 
--
+- Now we don't have hard coded animation values, we can not set animate y to a fixed value, for example, because this value should change as the user scrolls. Use useScroll and useTransform.
+- Though it actually wraps this in a so-called motion value object so that it does not re-render this component function every time we scroll, but instead manages this transformed value behind the scenes without causing the component function to re-render. So that this entire animation does not impact the component render cycle.
