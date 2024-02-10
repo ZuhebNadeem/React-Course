@@ -24,7 +24,7 @@ export function useInput(defaultValue, validationFn) {
   };
 }
 
-/*
+/* Usage: 
   const {
     value: emailValue,
     handleInputChange: handleEmailChange,
