@@ -3,7 +3,7 @@
 A totally optional of reducing your dependencies:
 
 - Redux, application-wide state management system, with React's Context API and React Hooks.
-- A bit deeper into React's Context API and React Hooks,
+- A bit deeper into React's Context API and React Hooks. 
 
 ### Why You Would Replace Redux
 
@@ -21,10 +21,13 @@ A totally optional of reducing your dependencies:
 ### Custom Hook as a Store
 
 - Now I will build my own global state management store and solution with just JavaScript react and react hooks and nothing else. I'll now show you a solution of managing state globally with Justwell, React and JavaScript.
-- UseState allows us to manage a state and whenever we update that state any component that uses useState will re render. And you also learned in the react hook section that if a component uses a custom hook, and that custom hook uses useState, the component that uses the custom hook will re render when you state in that custom hook will trigger a re render.
+- UseState allows us to manage a state and whenever we update that state any component that uses useState will re-render. And you also learned in the react hook section that if a component uses a custom hook, and that custom hook uses useState, the component that uses the custom hook will re render when you state in that custom hook will trigger a re render.
 - The idea is that we could share logic but not data, now will share logic and data by managing the data outside of the hook because inside of the hook it would not be shared. It would be inclusive to each component. Each component would get it's own data. But managing it outside of the hook every file imports this file or something from that file gets the same shared data.
-- Now I want to add this function to my listeners array because listeners should be an array full of functions which I can call to update all components that are using my hook. So that I have a list of listeners, a list of components are interested in updates to my global stateThat means that every component that uses my custom hook will get its own setState function which is then added to the shared listeners array.
+- Now I want to add this function to my listeners array because listeners should be an array full of functions which I can call to update all components that are using my hook. So that I have a list of listeners, a list of components are interested in updates to my global state. That means that every component that uses my custom hook will get its own setState function which is then added to the shared listeners array.
 - SO, now we're adding a setState function to our listeners for a component that uses my custom hook when that component mounts and by removing it when it unmounts.
 - My idea is that we can later define concrete usages of our store with their own actions and therefore such actions will soon be registered here in this actions object.
 - So, actions should be an object where we have keys which match my identifier here and where the value then is a concrete function, which is called by me adding parentheses here.
-- Using the Custom Store: 
+- Using the Custom Store: So what we built here in the end is our custom Redux like store implementation.
+- Every modules or every other file which imports from the store.js file will use the same values which are stored here. Then in the same file we create our own custom hook. These variables are defined outside of the hook though and that's an important thing because if they were defined inside of the hook then every component that used this hook would use its own values. Since they're defined outside of the hook, every component that uses our custom hook uses the same values. So now we're not just sharing the hook logic but also some shared data.
+- So whenever set state is called here, the component that uses this hook will be rerendered.
+- Stick to Redux. 
