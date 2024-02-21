@@ -24,7 +24,7 @@ Automated Testing
 
 ### Running a First Test (App.test.js)
 
-- This is a file which is there to test this app component because the convention is to name your testing files like your component files, just with the word test in the file name. So dot test dot JS as an extension to be precise.
+- This is a file which is there to test this app component because the convention is to name your testing files like your component files, just with the word test in the file name. So name.test.JS as an extension to be precise.
 - Test function, takes two arguments: The first argument is a description of the test. The second argument is which contains the actual test and code. So that's the code which will be executed once we run our test.
 - We need to add a second argument to this test function, which is an anonymous function, which will contain the actual testing code.
 
@@ -74,7 +74,7 @@ expect(outputElement).toBeInTheDocument();
 
 ### Testing Asynchronous Code (HTTP)
 
-- It is important to understand that get all by role, will instantly look for these elements on the screen. But keep in mind that here we are sending an HTTP request, which is an asynchronous action.
+- It is important to understand that getAllByRole, will instantly look for these elements on the screen. But keep in mind that here we are sending an HTTP request, which is an asynchronous action.
 - Instead of getAllByRole, you can use findAllByRole. The difference is that find queries instead of the get queries, return a promise. Here you get back a promise, and actually react testing library will basically reevaluate the screen a couple of times until this succeeds. So therefore now, this will then wait for this HTTP request to succeed.
 - With help of defined queries, we are able to wait for our data to be rendered.
 
@@ -91,7 +91,6 @@ expect(listItemElements).not.toHaveLength(0);
 ### Working With Mocks
 
 - We generally don't wanna send Http requests to our servers. We don't wanna send requests because A: that will cause a lot of network traffic AND B: You don't wanna send requests to servers that start changing things there(like in post, your tests might start inserting data into a database).
-- We want to send it to fake server, or let it be.
 - I don't wanna test whether fetch successfully sends a request technically behind the scenes. I instead wanna test if my Component behaves correctly depending on the different outcomes of sending a request. So I wanna check if my Component behaves correctly once I got the response data.
 - Using mock function, that does not send real request.
 - jest.fn(): Creates a mock function.
